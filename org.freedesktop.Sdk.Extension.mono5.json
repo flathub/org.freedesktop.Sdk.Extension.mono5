@@ -25,6 +25,10 @@
                     "type": "archive",
                     "url": "https://download.mono-project.com/sources/mono/mono-5.4.0.201.tar.bz2",
                     "sha256": "2a2f5c2a214a9980c086ac7561a5dd106f13d823a630de218eabafe1d995c5b4"
+                },
+                {
+                    "type": "patch",
+                    "path": "mono-default-extra-gac-prefix.patch"
                 }
             ]
         },
