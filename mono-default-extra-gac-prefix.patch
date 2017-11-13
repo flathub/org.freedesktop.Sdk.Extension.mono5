@@ -1,15 +1,12 @@
 diff -up mono-1/mono/metadata/assembly.c.default_extra_gac_prefix mono-1/mono/metadata/assembly.c
 --- mono-1/mono/metadata/assembly.c.default_extra_gac_prefix	2017-11-13 09:49:55.135774844 +0100
-+++ mono-1/mono/metadata/assembly.c	2017-11-13 10:10:32.669241397 +0100
-@@ -463,10 +463,9 @@ check_extra_gac_path_env (void)
++++ mono-1/mono/metadata/assembly.c	2017-11-13 09:50:17.922444399 +0100
+@@ -463,7 +463,7 @@ check_extra_gac_path_env (void)
  	
  	path = g_getenv ("MONO_GAC_PREFIX");
  	if (!path)
 -		return;
-+		path = "/app";
++		path = g_strdup ("/app");
  
  	splitted = g_strsplit (path, G_SEARCHPATH_SEPARATOR_S, 1000);
--	g_free (path);
- 
- 	if (extra_gac_paths)
- 		g_strfreev (extra_gac_paths);
+ 	g_free (path);
