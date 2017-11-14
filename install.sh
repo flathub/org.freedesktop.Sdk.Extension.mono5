@@ -5,7 +5,7 @@ BASE_GACS="System System.Core System.Xml System.Configuration I18N I18N.CJK I18N
 mkdir -p /app/etc /app/bin /app/lib/mono/4.5 /app/lib/mono/gac
 cp /usr/lib/sdk/mono5/bin/mono /app/bin/mono
 cp /usr/lib/sdk/mono5/lib/libMonoPosixHelper.so /app/lib/
-cp -ar /usr/lib/sdk/mono5/lib/mono/4.5/*.dll* /app/lib/mono/4.5/
+cp /usr/lib/sdk/mono5/lib/mono/4.5/*.dll* /app/lib/mono/4.5/
 rm -f /app/lib/mono/4.5/Microsoft.CodeAnalysis*
 cp -ar /usr/lib/sdk/mono5/etc/mono /app/etc
 
