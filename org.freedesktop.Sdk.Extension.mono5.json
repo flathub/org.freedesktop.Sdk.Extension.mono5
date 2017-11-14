@@ -36,14 +36,8 @@
             "name": "scripts",
             "sources": [
                 {
-                    "type": "script",
-                    "commands": [
-                        "mkdir -p /app/lib",
-                        "mkdir -p /app/bin",
-                        "cp /usr/lib/sdk/mono5/bin/mono /app/bin/mono",
-                        "cp -ar /usr/lib/sdk/mono5/lib/mono /app/lib/mono"
-                    ],
-                    "dest-filename": "install.sh"
+                    "type": "file",
+                    "path": "install.sh"
                 },
                 {
                     "type": "script",
@@ -58,7 +52,7 @@
             ],
             "buildsystem": "simple",
             "build-commands": [
-                "cp use.sh install.sh /usr/lib/sdk/mono5/"
+                "install use.sh install.sh /usr/lib/sdk/mono5/"
             ]
         },
         {
