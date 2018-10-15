@@ -23,8 +23,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://download.mono-project.com/sources/mono/mono-5.4.0.201.tar.bz2",
-                    "sha256": "2a2f5c2a214a9980c086ac7561a5dd106f13d823a630de218eabafe1d995c5b4"
+                    "url": "https://download.mono-project.com/sources/mono/mono-5.16.0.179.tar.bz2",
+                    "sha256": "93839af2ef0b8796935d8c1efd4cc693bc294bb2beb657b9edb6b4764f01e12b"
                 },
                 {
                     "type": "patch",
