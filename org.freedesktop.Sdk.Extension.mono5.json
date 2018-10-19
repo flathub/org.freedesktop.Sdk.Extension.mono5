@@ -10,8 +10,6 @@
     "appstream-compose": false,
     "cleanup": [ ],
     "build-options" : {
-        "cflags": "-O2 -g",
-        "cxxflags": "-O2 -g",
         "prefix": "/usr/lib/sdk/mono5",
         "env": {
             "V": "1"
