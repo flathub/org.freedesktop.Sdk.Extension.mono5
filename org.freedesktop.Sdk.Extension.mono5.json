@@ -1,21 +1,15 @@
 {
     "id": "org.freedesktop.Sdk.Extension.mono5",
-    "branch": "1.6",
     "runtime": "org.freedesktop.Sdk",
     "build-extension": true,
     "sdk": "org.freedesktop.Sdk",
-    "runtime-version": "1.6",
+    "runtime-version": "19.08",
     "sdk-extensions": [],
     "separate-locales": false,
     "appstream-compose": false,
     "cleanup": [ ],
     "build-options" : {
-        "cflags": "-O2 -g",
-        "cxxflags": "-O2 -g",
-        "prefix": "/usr/lib/sdk/mono5",
-        "env": {
-            "V": "1"
-        }
+        "prefix": "/usr/lib/sdk/mono5"
     },
     "modules": [
         {
