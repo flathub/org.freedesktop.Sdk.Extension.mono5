@@ -4,13 +4,8 @@
     "build-extension": true,
     "sdk": "org.freedesktop.Sdk",
     "runtime-version": "19.08",
-    "sdk-extensions": [],
     "separate-locales": false,
     "appstream-compose": false,
-    "cleanup": [ ],
-    "build-options" : {
-        "prefix": "/usr/lib/sdk/mono5"
-    },
     "modules": [
         {
             "name": "python-2.7",
@@ -31,13 +26,16 @@
                 "--enable-unicode=ucs4"
             ],
             "post-install": [
-                /* Theres seem to be a permissions missmatch that causes the debug stripping to fail */
-                "chmod 644 $FLATPAK_DEST/lib/libpython2.7.so.1.0"
+                "chmod 644 /app/lib/libpython2.7.so.1.0",
+                "ln -s /app/bin/python2 /app/bin/python"
             ],
             "cleanup": ["*"]
         },
         {
             "name": "mono",
+            "build-options" : {
+                "prefix": "/usr/lib/sdk/mono5"
+            },
             "sources": [
                 {
                     "type": "archive",
