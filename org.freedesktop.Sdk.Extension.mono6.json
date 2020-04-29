@@ -1,5 +1,5 @@
 {
-    "id": "org.freedesktop.Sdk.Extension.mono5",
+    "id": "org.freedesktop.Sdk.Extension.mono6",
     "branch": "19.08",
     "runtime": "org.freedesktop.Sdk",
     "build-extension": true,
@@ -21,14 +21,14 @@
             "build-options" : {
                 "prefix": "${FLATPAK_DEST}",
                 "env": {
-                    "PATH": "/usr/bin:/usr/lib/sdk/mono5/bin"
+                    "PATH": "/usr/bin:/usr/lib/sdk/mono6/bin"
                 }
             },
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://download.mono-project.com/sources/mono/mono-5.20.1.34.tar.bz2",
-                    "sha256": "cd91d44cf62515796ba90dfdc274bb33471c25a2f1a262689a3bdc0a672b7c8b"
+                    "url": "https://download.mono-project.com/sources/mono/mono-6.8.0.105.tar.xz",
+                    "sha256": "578799c44c3c86a9eb5daf6dec6c60a24341940fd376371956d4a46cf8612178"
                 }
             ]
         },
@@ -66,7 +66,7 @@
             "sources": [
                 {
                     "type": "file",
-                    "path": "org.freedesktop.Sdk.Extension.mono5.appdata.xml"
+                    "path": "org.freedesktop.Sdk.Extension.mono6.appdata.xml"
                 }
             ]
         }
