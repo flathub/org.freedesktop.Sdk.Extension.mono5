@@ -1,25 +1,29 @@
 {
     "id": "org.freedesktop.Sdk.Extension.mono5",
-    "branch": "1.6",
+    "branch": "19.08",
     "runtime": "org.freedesktop.Sdk",
     "build-extension": true,
     "sdk": "org.freedesktop.Sdk",
-    "runtime-version": "1.6",
-    "sdk-extensions": [],
+    "runtime-version": "19.08",
     "separate-locales": false,
     "appstream-compose": false,
-    "cleanup": [ ],
-    "build-options" : {
-        "cflags": "-O2 -g",
-        "cxxflags": "-O2 -g",
-        "prefix": "${FLATPAK_DEST}",
-        "env": {
-            "V": "1"
-        }
-    },
     "modules": [
         {
+            "name": "python",
+            "buildsystem": "simple",
+            "build-commands": [
+                "mkdir -p ${FLATPAK_DEST}/bin",
+                "ln -s /bin/python3 ${FLATPAK_DEST}/bin/python"
+            ]
+        },
+        {
             "name": "mono",
+            "build-options" : {
+                "prefix": "${FLATPAK_DEST}",
+                "env": {
+                    "PATH": "/usr/bin:/usr/lib/sdk/mono5/bin"
+                }
+            },
             "sources": [
                 {
                     "type": "archive",
