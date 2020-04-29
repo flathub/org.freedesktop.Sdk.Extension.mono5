@@ -1,6 +1,5 @@
 {
     "id": "org.freedesktop.Sdk.Extension.mono5",
-    "branch": "19.08",
     "runtime": "org.freedesktop.Sdk",
     "build-extension": true,
     "sdk": "org.freedesktop.Sdk",
