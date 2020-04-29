@@ -13,7 +13,8 @@
             "build-commands": [
                 "mkdir -p ${FLATPAK_DEST}/bin",
                 "ln -s /bin/python3 ${FLATPAK_DEST}/bin/python"
-            ]
+            ],
+            "cleanup": ["*"]
         },
         {
             "name": "mono",
