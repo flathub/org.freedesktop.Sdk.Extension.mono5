@@ -12,7 +12,7 @@
     "build-options" : {
         "cflags": "-O2 -g",
         "cxxflags": "-O2 -g",
-        "prefix": "/usr/lib/sdk/mono5",
+        "prefix": "${FLATPAK_DEST}",
         "env": {
             "V": "1"
         }
@@ -38,9 +38,9 @@
                 {
                     "type": "script",
                     "commands": [
-                        "export PATH=$PATH:/usr/lib/sdk/mono5/bin",
-                        "export LD_LIBRARY_PATH=${LD_LIBRARY_PATH:+$LD_LIBRARY_PATH:}/usr/lib/sdk/mono5/lib",
-                        "export PKG_CONFIG_PATH=${PKG_CONFIG_PATH:+$PKG_CONFIG_PATH:}/usr/lib/sdk/mono5/lib/pkgconfig",
+                        "export PATH=$PATH:${FLATPAK_DEST}/bin",
+                        "export LD_LIBRARY_PATH=${LD_LIBRARY_PATH:+$LD_LIBRARY_PATH:}${FLATPAK_DEST}/lib",
+                        "export PKG_CONFIG_PATH=${PKG_CONFIG_PATH:+$PKG_CONFIG_PATH:}${FLATPAK_DEST}/lib/pkgconfig",
                         "export MONO_GAC_PREFIX=/app"
                     ],
                     "dest-filename": "use.sh"
@@ -48,7 +48,7 @@
             ],
             "buildsystem": "simple",
             "build-commands": [
-                "install use.sh install.sh /usr/lib/sdk/mono5/"
+                "install use.sh install.sh ${FLATPAK_DEST}/"
             ]
         },
         {
@@ -56,8 +56,8 @@
             "buildsystem": "simple",
             "build-commands": [
                 "mkdir -p ${FLATPAK_DEST}/share/appdata",
-                "cp org.freedesktop.Sdk.Extension.mono5.appdata.xml ${FLATPAK_DEST}/share/appdata",
-                "appstream-compose  --basename=org.freedesktop.Sdk.Extension.mono5 --prefix=${FLATPAK_DEST} --origin=flatpak org.freedesktop.Sdk.Extension.mono5"
+                "cp ${FLATPAK_ID}.appdata.xml ${FLATPAK_DEST}/share/appdata",
+                "appstream-compose  --basename=${FLATPAK_ID} --prefix=${FLATPAK_DEST} --origin=flatpak ${FLATPAK_ID}"
             ],
             "sources": [
                 {
