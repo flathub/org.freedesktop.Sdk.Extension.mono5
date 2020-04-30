@@ -8,43 +8,27 @@
     "appstream-compose": false,
     "modules": [
         {
-            "name": "python-2.7",
-            "sources": [
-                {
-                    "type": "archive",
-                    "url": "https://www.python.org/ftp/python/2.7.17/Python-2.7.17.tar.xz",
-                    "sha256": "4d43f033cdbd0aa7b7023c81b0e986fd11e653b5248dac9144d508f11812ba41"
-                }
-            ],
-            "config-opts": [
-                "--enable-shared",
-                "--with-ensurepip=yes",
-                "--with-system-expat",
-                "--with-system-ffi",
-                "--enable-loadable-sqlite-extensions",
-                "--with-dbmliborder=gdbm",
-                "--enable-unicode=ucs4"
-            ],
-            "post-install": [
-                "chmod 644 /app/lib/libpython2.7.so.1.0",
-                "ln -s /app/bin/python2 /app/bin/python"
+            "name": "python",
+            "buildsystem": "simple",
+            "build-commands": [
+                "mkdir -p ${FLATPAK_DEST}/bin",
+                "ln -s /bin/python3 ${FLATPAK_DEST}/bin/python"
             ],
             "cleanup": ["*"]
         },
         {
             "name": "mono",
             "build-options" : {
-                "prefix": "/usr/lib/sdk/mono5"
+                "prefix": "${FLATPAK_DEST}",
+                "env": {
+                    "PATH": "/usr/bin:/usr/lib/sdk/mono5/bin"
+                }
             },
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://download.mono-project.com/sources/mono/mono-5.16.0.179.tar.bz2",
-                    "sha256": "93839af2ef0b8796935d8c1efd4cc693bc294bb2beb657b9edb6b4764f01e12b"
-                },
-                {
-                    "type": "patch",
-                    "path": "mono-default-extra-gac-prefix.patch"
+                    "url": "https://download.mono-project.com/sources/mono/mono-5.20.1.34.tar.bz2",
+                    "sha256": "cd91d44cf62515796ba90dfdc274bb33471c25a2f1a262689a3bdc0a672b7c8b"
                 }
             ]
         },
@@ -58,9 +42,9 @@
                 {
                     "type": "script",
                     "commands": [
-                        "export PATH=$PATH:/usr/lib/sdk/mono5/bin",
-                        "export LD_LIBRARY_PATH=${LD_LIBRARY_PATH:+$LD_LIBRARY_PATH:}/usr/lib/sdk/mono5/lib",
-                        "export PKG_CONFIG_PATH=${PKG_CONFIG_PATH:+$PKG_CONFIG_PATH:}/usr/lib/sdk/mono5/lib/pkgconfig",
+                        "export PATH=$PATH:${FLATPAK_DEST}/bin",
+                        "export LD_LIBRARY_PATH=${LD_LIBRARY_PATH:+$LD_LIBRARY_PATH:}${FLATPAK_DEST}/lib",
+                        "export PKG_CONFIG_PATH=${PKG_CONFIG_PATH:+$PKG_CONFIG_PATH:}${FLATPAK_DEST}/lib/pkgconfig",
                         "export MONO_GAC_PREFIX=/app"
                     ],
                     "dest-filename": "use.sh"
@@ -68,7 +52,7 @@
             ],
             "buildsystem": "simple",
             "build-commands": [
-                "install use.sh install.sh /usr/lib/sdk/mono5/"
+                "install use.sh install.sh ${FLATPAK_DEST}/"
             ]
         },
         {
@@ -76,8 +60,8 @@
             "buildsystem": "simple",
             "build-commands": [
                 "mkdir -p ${FLATPAK_DEST}/share/appdata",
-                "cp org.freedesktop.Sdk.Extension.mono5.appdata.xml ${FLATPAK_DEST}/share/appdata",
-                "appstream-compose  --basename=org.freedesktop.Sdk.Extension.mono5 --prefix=${FLATPAK_DEST} --origin=flatpak org.freedesktop.Sdk.Extension.mono5"
+                "cp ${FLATPAK_ID}.appdata.xml ${FLATPAK_DEST}/share/appdata",
+                "appstream-compose  --basename=${FLATPAK_ID} --prefix=${FLATPAK_DEST} --origin=flatpak ${FLATPAK_ID}"
             ],
             "sources": [
                 {

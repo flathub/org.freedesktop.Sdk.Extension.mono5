@@ -4,4 +4,9 @@
   <metadata_license>CC0-1.0</metadata_license>
   <name>Mono 5.x Sdk extension</name>
   <summary>Mono runtime, compiler and tools</summary>
+  <url type="homepage">https://www.mono-project.com/</url>
+  <url type="bugtracker">https://github.com/flathub/org.freedesktop.Sdk.Extension.mono5</url>
+  <releases>
+    <release version="5.20.1.34" date="2019-07-16" />
+  </releases>
 </component>
