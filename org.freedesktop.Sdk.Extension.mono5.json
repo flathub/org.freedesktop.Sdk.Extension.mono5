@@ -42,9 +42,9 @@
                 {
                     "type": "script",
                     "commands": [
-                        "export PATH=$PATH:${FLATPAK_DEST}/bin",
-                        "export LD_LIBRARY_PATH=${LD_LIBRARY_PATH:+$LD_LIBRARY_PATH:}${FLATPAK_DEST}/lib",
-                        "export PKG_CONFIG_PATH=${PKG_CONFIG_PATH:+$PKG_CONFIG_PATH:}${FLATPAK_DEST}/lib/pkgconfig",
+                        "export PATH=$PATH:/usr/lib/sdk/mono5/bin",
+                        "export LD_LIBRARY_PATH=${LD_LIBRARY_PATH:+$LD_LIBRARY_PATH:}/usr/lib/sdk/mono5/lib",
+                        "export PKG_CONFIG_PATH=${PKG_CONFIG_PATH:+$PKG_CONFIG_PATH:}/usr/lib/sdk/mono5/lib/pkgconfig",
                         "export MONO_GAC_PREFIX=/app"
                     ],
                     "dest-filename": "use.sh"
